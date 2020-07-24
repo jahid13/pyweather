@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br/>
+{% if api %}
+    {% if api == "Error..." %}
+        there is an error, please try again
+    {% else %}
+<div class="jumbotron">
+    <h1 class="display-4">{{ api.0.Category.Name }}</h1>
+    <p class="lead">Air Quality: {{ api.0.AQI }}</p>
+    <p> {{ category_description }} <p/>
+    <p> {{ api }} <p/>
 
-<h1>hello world!!</h1>
+    <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a>
+</div>
+    {% endif %}
+{% endif %}
 
 {% endblock %}
